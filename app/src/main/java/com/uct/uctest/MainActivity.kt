@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
 
             } else {
-                Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Incorrecto", Toast.LENGTH_LONG).show()
             }
         }
 
