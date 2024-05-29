@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // LA UCT ES LO MAXIMO!!
+
         var usuario: EditText = findViewById(R.id.edtUser)
         var password = findViewById<EditText>(R.id.edtPass)
         var boton: Button = findViewById(R.id.btnLogin)
