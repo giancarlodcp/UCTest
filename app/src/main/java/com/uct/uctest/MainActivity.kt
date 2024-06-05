@@ -7,11 +7,24 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+/**
+ * Lista de tareas
+ * Lista de compras
+ * Pokedex
+ * Ecommerce (listar productos)
+ * App de restaurante (listar restaurantes)
+ *
+ * */
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val db = Firebase.firestore
 
         var usuario: EditText = findViewById(R.id.edtUser)
         var password = findViewById<EditText>(R.id.edtPass)
@@ -23,6 +36,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         boton.setOnClickListener {
+            //https://firebase.google.com/docs/firestore/quickstart?hl=es-419#kotlin+ktx
+            val user = hashMapOf(
+                "usuario" to usuario.text.toString(),
+                "password" to password.text.toString()
+            )
+
+            db.collection("usuarios")
+                .add(user)
 
             if(usuario.text.toString() == "gian" && password.text.toString() == "123"){
                 Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show()

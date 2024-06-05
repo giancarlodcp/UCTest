@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "671820779183",
+    "project_id": "uctest-13250",
+    "storage_bucket": "uctest-13250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671820779183:android:62376c9e2a21e9655b8e5a",
+        "android_client_info": {
+          "package_name": "com.uct.uctest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcOqL6Gub4SrxOl20klgSpEnLDWENXpls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
