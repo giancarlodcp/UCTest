@@ -47,8 +47,9 @@ class MainActivity : AppCompatActivity() {
 
             if(usuario.text.toString() == "gian" && password.text.toString() == "123"){
                 Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this,CalculadoraActivity::class.java)
+                var intent = Intent(this,ListadoProductos::class.java)
                 startActivity(intent)
+                finish()
 
             } else {
                 Toast.makeText(this, "Incorrecto", Toast.LENGTH_LONG).show()
