@@ -1,5 +1,6 @@
 package com.uct.uctest
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class ProductosAdapter: ListAdapter<Productos, ProductosAdapter.ProductosViewHolder>(ProductosDiffCallback()) {
+class ProductosAdapter(val listener:ProductosClickListener): ListAdapter<Productos, ProductosAdapter.ProductosViewHolder>(ProductosDiffCallback()) {
 
-
-    inner class ProductosViewHolder(item: View):RecyclerView.ViewHolder(item) {
+    inner class ProductosViewHolder(item: View):RecyclerView.ViewHolder(item),View.OnClickListener {
         private val imageUrl = item.findViewById<ImageView>(R.id.imageUrl)
         private val title = item.findViewById<TextView>(R.id.title)
+
+        init {
+            item.setOnClickListener(this)
+        }
 
         fun bind(producto: Productos){
             title.text = producto.title
@@ -24,6 +28,13 @@ class ProductosAdapter: ListAdapter<Productos, ProductosAdapter.ProductosViewHol
                 .into(imageUrl)
         }
 
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if(position != RecyclerView.NO_POSITION){
+                val producto = getItem(position)
+                listener.onProductClick(producto)
+            }
+        }
     }
 
     class ProductosDiffCallback: DiffUtil.ItemCallback<Productos>() {
@@ -46,6 +57,10 @@ class ProductosAdapter: ListAdapter<Productos, ProductosAdapter.ProductosViewHol
     override fun onBindViewHolder(holder: ProductosViewHolder, position: Int) {
         val producto = getItem(position)
         holder.bind(producto)
+    }
+
+    interface ProductosClickListener{
+        fun onProductClick(producto: Productos)
     }
 
 }
